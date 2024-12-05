@@ -29,20 +29,27 @@ try:
     print("Shape of y:", y.shape)
 
     # Preprocessing
-    le = LabelEncoder()
+    label_encoders = {}
     for column in X.columns:
-        X[column] = le.fit_transform(X[column])
+        le = LabelEncoder()
+        # Ensure 'not-interested' is always in the label set
+        unique_values = X[column].unique().tolist()
+        if 'not-interested' not in unique_values:
+            unique_values.append('not-interested')
+        le.fit(unique_values)
+        X[column] = le.transform(X[column])
+        label_encoders[column] = le
     
-    y = le.fit_transform(y)
+    target_encoder = LabelEncoder()
+    y = target_encoder.fit_transform(y)
     
     # Save the label encoders
-    label_encoders = {column: le for column in X.columns}
     with open('label_encoders.pkl', 'wb') as f:
         pickle.dump(label_encoders, f)
     
     # Save the target label encoder
     with open('target_encoder.pkl', 'wb') as f:
-        pickle.dump(le, f)
+        pickle.dump(target_encoder, f)
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     
@@ -90,7 +97,13 @@ def result():
         encoded_data = []
         for i, value in enumerate(data):
             column = X.columns[i]
-            encoded_value = label_encoders[column].transform([value])[0]
+            try:
+                encoded_value = label_encoders[column].transform([value])[0]
+            except ValueError:
+                # If an unseen label occurs, use the most frequent label from training data
+                most_frequent = label_encoders[column].classes_[0]  # Assumes classes are ordered by frequency
+                encoded_value = label_encoders[column].transform([most_frequent])[0]
+                print(f"Unseen label '{value}' for column '{column}', defaulting to most frequent: '{most_frequent}'")
             encoded_data.append(encoded_value)
 
         input_data = np.array(encoded_data).reshape(1, -1)
@@ -98,6 +111,7 @@ def result():
         predictions = loaded_model.predict(input_data)
         pred_proba = loaded_model.predict_proba(input_data)
 
+        # Get alternative job predictions
         pred = pred_proba > 0.05
         final_res = {}
 
@@ -117,7 +131,7 @@ def result():
 
     except Exception as e:
         print(f"An error occurred: {str(e)}")
-        return jsonify({"error": "An error occurred while processing your request."}), 500
+        return jsonify({"error": "An error occurred while processing your request. Please ensure all inputs are valid."}), 500
 
 if __name__ == "__main__":
     print("Registered Routes:")
