@@ -1,7 +1,5 @@
-CareerQ - Career and Mental Health Predictor 
 
-
-# Getting Started with Create React App
+ # CareerQ - Career and Mental Health Predictor 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
