@@ -1,71 +1,101 @@
 
  # CareerQ - Career and Mental Health Predictor 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CareerQ is an intelligent career path recommendation platform designed to guide students in choosing the right career based on their interests, hobbies, academic performance, and mental well-being. The system also monitors stress and anxiety levels to offer a more personalized and supportive recommendation experience.
 
-## Available Scripts
+## 🔍 Overview
 
-In the project directory, you can run:
+Choosing a suitable career can be overwhelming for students. CareerQ simplifies this process by using machine learning models to analyze students' responses and suggest the most fitting career options. It also incorporates mental health assessment to ensure well-rounded support for the user.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Key Features:
+-  **Career Prediction** — Suggests careers based on interest, hobbies, and academics.
+- **Mental Health Assessment** — Detects stress or anxiety using user inputs.
+- **Machine Learning Models** — Makes predictions based on trained classifiers.
+- **Simple and Friendly UI** — React-based frontend for easy interaction.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🧠 Tech Stack
 
-### `npm test`
+| Frontend        | Backend        | Machine Learning     |
+|------------------|------------------|------------------------|
+| React.js         | Flask (Python)    | Scikit-learn, Pandas, NumPy |
+| CSS / Tailwind   | RESTful API       | Trained Classifiers   |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## 📁 Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+📦 CareerQ/
+├── client/                     # Frontend (React app)
+├── server/                     # Backend (Flask API)
+├── model/                      # ML model files and logic
+├── dataset/                    # Training and test datasets
+├── README.md                   # Project documentation
+└── requirements.txt            # Python dependencies
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `npm run eject`
+- Node.js
+- Python 3.8+
+- npm or yarn
+- Flask
+- scikit-learn, pandas, numpy
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/SakshiRRathod/CareerQ.git
+   cd CareerQ
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. **Setup Python Backend**
+   ```bash
+   cd server
+   pip install -r requirements.txt
+   python app.py
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. **Setup React Frontend**
+   ```bash
+   cd ../client
+   npm install
+   npm start
+   ```
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 💡 Use Cases
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Personalized career guidance for students
+- Mental health-aware academic counseling
+- Automated decision-making support tool for institutions
 
-### Code Splitting
+---
+## 📈 Model Summary
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The system uses machine learning algorithms (such as Decision Trees, Logistic Regression, or SVMs) trained on a custom dataset. Input parameters include:
 
-### Analyzing the Bundle Size
+- Interest Areas
+- Hobbies
+- Academic Scores
+- Mental Health Indicators
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Based on these, the model predicts:
+- Most suitable career path
+- Whether the student is mentally okay or experiencing stress/anxiety
 
-### Making a Progressive Web App
+---
+## 🔐 Disclaimer
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This project is a student-level academic tool. It is not a substitute for professional mental health or career counseling. Use responsibly and ethically.
 
-### Advanced Configuration
+---
+## 📃 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+MIT © 2025 Sakshi sakshirathod8530@gmail.com
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
