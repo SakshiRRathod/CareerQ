@@ -25,7 +25,7 @@ function Home() {
   return (
     <div className="home-container">
       <div className="left-sidebar">
-        <div className="logo">Career.Q</div>
+        <div className="logo">Career.sQ</div>
         <nav className="vertical-nav">
           <ul>
             <li><Link to="/home">Home</Link></li>
